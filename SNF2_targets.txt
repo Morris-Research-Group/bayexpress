@@ -1,0 +1,24 @@
+!
+!Date: 12/18/2024
+!From: Saccharomyces Genome Database (SGD) 
+!URL: http://www.yeastgenome.org/ 
+!Contact Email: sgd-helpdesk@lists.stanford.edu 
+!Funding: NHGRI at US NIH, grant number 5-U41-HG001315 
+!
+
+Regulator	Regulator Systematic Name	Target	Target Systematic Name	Direction	Regulation of	Happens During	Regulator Type	Direction	Regulation Of	Happens During	Method	Evidence	Strain Background	Reference
+SNF2	YOR290C	CUP1-1	YHR053C		transcription	cellular response to copper ion	chromatin modifier		transcription	cellular response to copper ion	manually curated	chromatin immunoprecipitation evidence	Other	Wimalarathna RN, et al. (2014) PMID:24471920
+SNF2	YOR290C	CUP1-1	YHR053C	positive	transcription	cellular response to copper ion	chromatin modifier	positive	transcription	cellular response to copper ion	manually curated	quantitative reverse transcription polymerase chain reaction evidence	Other	Wimalarathna RN, et al. (2014) PMID:24471920
+SNF2	YOR290C	CUP1-2	YHR055C		transcription	cellular response to copper ion	chromatin modifier		transcription	cellular response to copper ion	manually curated	chromatin immunoprecipitation evidence	Other	Wimalarathna RN, et al. (2014) PMID:24471920
+SNF2	YOR290C	CUP1-2	YHR055C	positive	transcription	cellular response to copper ion	chromatin modifier	positive	transcription	cellular response to copper ion	manually curated	quantitative reverse transcription polymerase chain reaction evidence	Other	Wimalarathna RN, et al. (2014) PMID:24471920
+SNF2	YOR290C	ECM4	YKR076W	negative	transcription	cellular response to cadmium ion	chromatin modifier	negative	transcription	cellular response to cadmium ion	manually curated	reverse transcription polymerase chain reaction evidence	S288C	Sahu RK, et al. (2020) PMID:31846549
+SNF2	YOR290C	GTO1	YGR154C	negative	transcription	cellular response to cadmium ion	chromatin modifier	negative	transcription	cellular response to cadmium ion	manually curated	reverse transcription polymerase chain reaction evidence	S288C	Sahu RK, et al. (2020) PMID:31846549
+SNF2	YOR290C	GTT2	YLL060C	negative	transcription	cellular response to cadmium ion	chromatin modifier	negative	transcription	cellular response to cadmium ion	manually curated	reverse transcription polymerase chain reaction evidence	S288C	Sahu RK, et al. (2020) PMID:31846549
+SNF2	YOR290C	HO	YDL227C	positive	transcription		chromatin modifier	positive	transcription		manually curated	beta-galactosidase reporter gene assay evidence	S288C	Richmond E and Peterson CL (1996) PMID:8871545
+SNF2	YOR290C	HSP26	YBR072W	negative	transcription	cellular response to cadmium ion	chromatin modifier	negative	transcription	cellular response to cadmium ion	manually curated	reverse transcription polymerase chain reaction evidence	S288C	Sahu RK, et al. (2020) PMID:31846549
+SNF2	YOR290C	INM1	YHR046C		transcription	cellular response to inositol	chromatin modifier		transcription	cellular response to inositol	manually curated	chromatin immunoprecipitation-qPCR evidence	S288C	Zhang L and Di J (2014) PMID:25211324
+SNF2	YOR290C	SPL2	YHR136C	positive	transcription		chromatin modifier	positive	transcription		manually curated	northern blot evidence	S288C	Ellison MA, et al. (2019) PMID:31092540
+SNF2	YOR290C	SUC2	YIL162W	positive	transcription		chromatin modifier	positive	transcription		manually curated	enzymatic activity assay evidence	S288C	Richmond E and Peterson CL (1996) PMID:8871545
+SNF2	YOR290C	TPK1	YJL164C		transcription	cellular response to heat	chromatin modifier		transcription	cellular response to heat	manually curated	quantitative reverse transcription polymerase chain reaction evidence	S288C	Reca S, et al. (2020) PMID:32599085
+SNF2	YOR290C	TPK1	YJL164C		transcription	cellular response to heat	chromatin modifier		transcription	cellular response to heat	manually curated	chromatin immunoprecipitation-chip evidence	S288C	Reca S, et al. (2020) PMID:32599085
+SNF2	YOR290C	VTC3	YPL019C	positive	transcription		chromatin modifier	positive	transcription		manually curated	northern blot evidence	S288C	Ellison MA, et al. (2019) PMID:31092540
