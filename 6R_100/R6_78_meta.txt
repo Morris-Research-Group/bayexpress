@@ -1,0 +1,13 @@
+locus_name,dex
+n1_1,control
+n1_2,control
+n1_3,control
+n1_4,control
+n1_5,control
+n1_6,control
+n2_1,treatment
+n2_2,treatment
+n2_3,treatment
+n2_4,treatment
+n2_5,treatment
+n2_6,treatment
