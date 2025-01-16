@@ -1,19 +1,45 @@
-There are several manuscripts in preparation related to the work in this repository, here is a description what to find where from which paper. 
+# Using bayexpress
+
+Bayexpress is a framework designed for Differential Gene Expression Analysis of processed RNA-Seq data. It compares sequencing read counts for genes between different experiments.
+
+
+## Dependencies
+
+All basic python functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.py](bayexpress_functions.py). Their dependencies are the numpy and scipy python packages. 
+
+All basic R functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.R](bayexpress_functions.R). 
+
+If you are interested in calculating Bayes factors using either python or R you can follow our [minimal working example](minimal_working_example.md).
+
+
+
+$~$
 
 -----------------------------
 
-### All code and data used for 
-### the arXiv preprint (arXiv:2406.19989 [stat.ME])
-### https://doi.org/10.48550/arXiv.2406.19989
+$~$
 
+> [!NOTE]
+> There are several manuscripts in preparation related to the work in this repository, here is a description what to find where from which paper.
+
+1. [Hoerbst et al. 2024: Closed Form Solution for the 2-Sample Problem in Differential Gene Expression Analysis](#Closed-Form-Solution-for-the-2-Sample-Problem-in-Differential-Gene-Expression-Analysis)
+2. [Hoerbst et al. 2025: A Bayesian framework for ranking genes based on their statistical evidence for differential expression](#A-Bayesian-framework-for-ranking-genes-based-on-their-statistical-evidence-for-differential-expression)
+3. [Hoerbst et al. 2025: What is a differentially expressed gene?](#What-is-a-differentially-expressed-gene?)
+
+$~$
+
+-----------------------------
+
+$~$
+
+All code and data used for the arXiv preprint (arXiv:2406.19989 [stat.ME]) https://doi.org/10.48550/arXiv.2406.19989
 # Closed Form Solution for the 2-Sample Problem in Differential Gene Expression Analysis
 
 by 
 
 Franziska Hoerbst, Gurpinder Singh Sidhu, Melissa Tomkins, and Richard J. Morris
 
-### Using bayexpress
-All basic functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.py](bayexpress_functions.py).
+$~$
 
 
 ### Figure 3
@@ -22,17 +48,18 @@ In Figure 3 we explore the analytical Bayesian framework using synthetic data. A
 
 -----------------------------
 
-### All code and data used for 
+$~$
 
-# Analytical Bayesian Framework for Differential Gene Expression Analysis using RNA-Seq Data
+All code and data used for 
+
+# A Bayesian framework for ranking genes based on their statistical evidence for differential expression
 
 by 
 
 Franziska Hoerbst, Gurpinder Singh Sidhu, Thelonious Omori, Melissa Tomkins, and Richard J. Morris
 
+$~$
 
-### Using bayexpress
-All basic functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.py](bayexpress_functions.py).
 
 ### Reproducing the Figures in the paper
 
@@ -61,14 +88,17 @@ Can be reproduced via [package_comparison_RALL.ipynb](package_comparison_RALL.ip
 
 -----------------------------
 
+$~$
 
-### All code and data used for 
+All code and data used for 
 
 # What is a differentially expressed gene?
 
 by 
 
 Franziska Hoerbst, Gurpinder Singh Sidhu, Melissa Tomkins, and Richard J. Morris
+
+$~$
 
 
 ### Figures 1 (and 4-12)
@@ -83,16 +113,20 @@ In [example_genes_WIADEG_SNF2.ipynb](example_genes_WIADEG_SNF2.ipynb) we investi
 
 
 ### Figure 2 (and 13-16)
-For the control experiments between wild-type and wild-type, DGE analysis has only been done in bayexpress. The analysis has been done in [do_DGE.ipynb](do_DGE.ipynb), we recycled bootstrapping data created for the comparison experiment. The figures have been created in [CONTROL_R3_BF1.ipynb](CONTROL_R3_BF1.ipynb), [CONTROL_R3_BF10.ipynb](CONTROL_R3_BF10.ipynb), and [CONTROL_R3_BF100.ipynb](CONTROL_R3_BF100.ipynb) for 3 replicates and [CONTROL_R10_BF1.ipynb](CONTROL_R10_BF1.ipynb), [CONTROL_R10_BF10.ipynb](CONTROL_R10_BF10.ipynb), and [CONTROL_R10_BF100.ipynb](CONTROL_R10_BF100.ipynb) for 10 replicates. Figure 16 can be reproduced in [CONTROL_R3_BF1_AOTP.ipynb](CONTROL_R3_BF1_AOTP.ipynb) and [CONTROL_R10_BF1_AOTP.ipynb](CONTROL_R10_BF1_AOTP.ipynb).
+For the control experiments between wild-type and wild-type, DGE analysis has only been done in _bayexpress_. The analysis has been done in [do_DGE.ipynb](do_DGE.ipynb), we recycled bootstrapping data created for the comparison experiment. The figures have been created in [CONTROL_R3_BF1.ipynb](CONTROL_R3_BF1.ipynb), [CONTROL_R3_BF10.ipynb](CONTROL_R3_BF10.ipynb), and [CONTROL_R3_BF100.ipynb](CONTROL_R3_BF100.ipynb) for 3 replicates and [CONTROL_R10_BF1.ipynb](CONTROL_R10_BF1.ipynb), [CONTROL_R10_BF10.ipynb](CONTROL_R10_BF10.ipynb), and [CONTROL_R10_BF100.ipynb](CONTROL_R10_BF100.ipynb) for 10 replicates. Figure 16 can be reproduced in [CONTROL_R3_BF1_AOTP.ipynb](CONTROL_R3_BF1_AOTP.ipynb) and [CONTROL_R10_BF1_AOTP.ipynb](CONTROL_R10_BF1_AOTP.ipynb).
 
 ### Figure 3
 Calculating Bayes factors for consistency (BF_IC) and performing bootstrapping experiments to identify consistently inconsistent genes (list of genes marked* as AOTP = All Over The Place) has been carried out using [explore_clean_yeast_consistency.ipynb](explore_clean_yeast_consistency.ipynb). We explored these sets of genes in later parts of the notebook. 
 
 -----------------------------
 
+$~$
+
+
 # File by file
+
 [do_DGE.ipynb](do_DGE.ipynb) is a notebook doing all Differential Gene Expression analysis discussed in the paper. For running DESeq2 and edgeR we are calling R scripts (e.g. 'Do_DGE-DESeq2.R') to carry out the analysis. This is where the parameters for the packages are set. 
 
 For bootstrapping experiments we created 100 shuffled data sets consisting of 3, 6, 12, and 20 replicates of the pool of 44/42 which we used for package comparison. This was done in [comparison_data.ipynb](comparison_data.ipynb).
 
-All code is written in Python 3.10.6, the conda environment export can be found in [environment.yml](environment.yml).
+All code is written in Python 3.10.6 (except running _DESeq2_, _edgeR_ in R), the conda environment export can be found in [environment.yml](environment.yml) containing all python and R package necessary.

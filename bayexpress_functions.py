@@ -5,7 +5,7 @@ import scipy.special as sc
 import pandas as pd
 import numpy as np
 
-# calculating Bayes factors
+# calculating Bayes factors for differential gene expression (BF_21)
 def get_BF(N_1, n_1, N_2, n_2):
 
     return (sc.betaln( u_1 + n_1, u_2 + N_1 - n_1) + sc.betaln( u_1 + n_2, u_2 + N_2 - n_2) - sc.betaln( u_1 + n_1 + n_2, u_2 + N_1 - n_1 + N_2 - n_2)) / np.log(10) 
@@ -27,10 +27,10 @@ u_1 = 1
 u_2 = 1
 
 
-# calculating Bayes factors for consistency checks
+# calculating Bayes factors (BF_IC) for consistency 
 
-def get_nBF(data):
-    # this range is irrelevant if we want to do all 
+def get_BF_IC(data):
+    # this range is irrelevant if we want to do all replicates
     k = len(data.columns)
 
     evidence2 = np.full(len(data), 0)
