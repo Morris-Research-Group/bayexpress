@@ -34,7 +34,7 @@ Read counts for 5 genes in two different experiments (cound be conditions, devel
 | gene2 | 100 | 120 | 80 | 100 | 120 | 80 |
 | gene3 | 1000 | 1200 | 1100 | 1200 | 1300 | 1400 |
 | gene4 | 10000 | 12000 | 11000 | 12000 | 13000 | 14000 |
-| gene5 | 1000 | 1000 | 1000 | 1000 | 1000 |
+| gene5 | 1000 | 1000 | 1000 | 1000 | 1000 | 1000 |
 
         
 ### Passing a data frame or array
@@ -91,3 +91,38 @@ Read counts for 5 genes in two different experiments (cound be conditions, devel
 
     print(out_data)
 
+### Passing real data
+
+You can test the framework on your machines using the yeast data set with 42 wild-type and 44 mutant replicates. The read counts for it can be found in [WT_yeast.csv](WT_yeast.csv) and [Snf2_yeast.csv](Snf2_yeast.csv)
+
+    WT_yeast = pd.read_csv('WT_yeast.csv', index_col=0)
+    Snf2_yeast = pd.read_csv('Snf2_yeast.csv', index_col=0)
+
+    print(WT_yeast)
+    print(Snf2_yeast)
+
+Just as above with the small example frame we can go ahead and calculate Bayes factors for differential expression, inferred log fold change, Bayes factors for consistency and we can plot the expected expression probability q across all replicates (for plots see jupyter notebook [minimal_working_example.ipynb](minimal_working_example.ipynb)). 
+
+    # calculating Bayes factors and inferred fold change values for all of the genes
+    
+    out_data_yeast = pd.DataFrame({'genes': in_data.genes})
+
+    n_1 = WT_yeast.iloc[:,1:].sum(axis=1)
+    n_2 = Snf2_yeast.iloc[:,1:].sum(axis=1)
+
+    N_1 = WT_yeast.iloc[:,1:].sum(axis=1).sum()
+    N_2 = Snf2_yeast.iloc[:,1:].sum(axis=1).sum()
+
+    out_data_yeast['BF'] = get_BF(N_1, n_1, N_2, n_2)
+    out_data_yeast['FC'] = get_FC(N_1, n_1, N_2, n_2)
+
+    print(out_data_yeast)
+
+    # Furthermore, you can calculate a Bayes factor for consistency for the yeast data
+
+    # input data is a data frame containing all read counts for all genes (rows) and replicates (colums)
+
+    out_data_yeast['BF_IC_1'] = get_BF_IC(WT_yeast.iloc[:,1:])
+    out_data_yeast['BF_IC_2'] = get_BF_IC(Snf2_yeast.iloc[:,1:])
+
+    out_data_yeast
