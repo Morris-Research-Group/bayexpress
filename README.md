@@ -2,6 +2,9 @@
 
 Bayexpress is a framework designed for Differential Gene Expression Analysis of processed RNA-Seq data. It compares sequencing read counts for genes between different experiments.
 
+# A very friendly introduction to Bayesian statistics
+
+Should you be new to Bayesian concepts and you want to learn about it in an easier read than the papers mentioned below you can read my [friendly introduction to Bayesian statistics](https://franziskaaah.github.io/2024/10/24/A-very-friendly-Introduction-to-Bayesian-statistics.html).
 
 ## Dependencies
 
