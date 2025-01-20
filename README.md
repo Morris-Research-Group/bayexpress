@@ -119,7 +119,7 @@ In [example_genes_WIADEG_SNF2.ipynb](example_genes_WIADEG_SNF2.ipynb) we investi
 For the control experiments between wild-type and wild-type, DGE analysis has only been done in _bayexpress_. The analysis has been done in [do_DGE.ipynb](do_DGE.ipynb), we recycled bootstrapping data created for the comparison experiment. The figures have been created in [CONTROL_R3_BF1.ipynb](CONTROL_R3_BF1.ipynb), [CONTROL_R3_BF10.ipynb](CONTROL_R3_BF10.ipynb), and [CONTROL_R3_BF100.ipynb](CONTROL_R3_BF100.ipynb) for 3 replicates and [CONTROL_R10_BF1.ipynb](CONTROL_R10_BF1.ipynb), [CONTROL_R10_BF10.ipynb](CONTROL_R10_BF10.ipynb), and [CONTROL_R10_BF100.ipynb](CONTROL_R10_BF100.ipynb) for 10 replicates. Figure 16 can be reproduced in [CONTROL_R3_BF1_AOTP.ipynb](CONTROL_R3_BF1_AOTP.ipynb) and [CONTROL_R10_BF1_AOTP.ipynb](CONTROL_R10_BF1_AOTP.ipynb).
 
 ### Figure 3
-Calculating Bayes factors for consistency (BF_IC) and performing bootstrapping experiments to identify consistently inconsistent genes (list of genes marked* as AOTP = All Over The Place) has been carried out using [explore_clean_yeast_consistency.ipynb](explore_clean_yeast_consistency.ipynb). We explored these sets of genes in later parts of the notebook. 
+Calculating Bayes factors for consistency (BF_k1) and performing bootstrapping experiments to identify consistently inconsistent genes (list of genes marked* as AOTP = All Over The Place) has been carried out using [explore_clean_yeast_consistency.ipynb](explore_clean_yeast_consistency.ipynb). We explored these sets of genes in later parts of the notebook. 
 
 -----------------------------
 

@@ -27,9 +27,9 @@ u_1 = 1
 u_2 = 1
 
 
-# calculating Bayes factors (BF_IC) for consistency 
+# calculating Bayes factors (BF_k1) for consistency 
 
-def get_BF_IC(data):
+def get_BF_k1(data):
     # this range is irrelevant if we want to do all replicates
     k = len(data.columns)
 

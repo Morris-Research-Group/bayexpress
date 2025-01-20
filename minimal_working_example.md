@@ -67,7 +67,7 @@ Read counts for 5 genes in two different experiments (cound be conditions, devel
 
     print(out_data)
 
-## Calculating Bayes factors for consistency of replicates (BF_IC)
+## Calculating Bayes factors for consistency of replicates (BF_k1)
 
 ### Passing a data frame
 
@@ -86,8 +86,8 @@ Read counts for 5 genes in two different experiments (cound be conditions, devel
     
     # input data is a data frame containing all read counts for all genes (rows) and replicates (colums)
 
-    out_data['BF_IC_1'] = get_BF_IC(in_data.iloc[:,1:4])
-    out_data['BF_IC_2'] = get_BF_IC(in_data.iloc[:,4:])
+    out_data['BF_k1_1'] = get_BF_k1(in_data.iloc[:,1:4])
+    out_data['BF_k1_2'] = get_BF_k1(in_data.iloc[:,4:])
 
     print(out_data)
 
@@ -122,7 +122,7 @@ Just as above with the small example frame we can go ahead and calculate Bayes f
 
     # input data is a data frame containing all read counts for all genes (rows) and replicates (colums)
 
-    out_data_yeast['BF_IC_1'] = get_BF_IC(WT_yeast.iloc[:,1:])
-    out_data_yeast['BF_IC_2'] = get_BF_IC(Snf2_yeast.iloc[:,1:])
+    out_data_yeast['BF_k1_1'] = get_BF_k1(WT_yeast.iloc[:,1:])
+    out_data_yeast['BF_k1_2'] = get_BF_k1(Snf2_yeast.iloc[:,1:])
 
     out_data_yeast
