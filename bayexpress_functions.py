@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 # calculating Bayes factors for differential gene expression (BF_21)
-def get_BF(N_1, n_1, N_2, n_2):
+def get_BF_21(N_1, n_1, N_2, n_2):
 
     return (sc.betaln( u_1 + n_1, u_2 + N_1 - n_1) + sc.betaln( u_1 + n_2, u_2 + N_2 - n_2) - sc.betaln( u_1 + n_1 + n_2, u_2 + N_1 - n_1 + N_2 - n_2)) / np.log(10) 
 

@@ -21,8 +21,8 @@ See also the jupyter notebook [minimal_working_example.ipynb](minimal_working_ex
 
 ### Passing Single Values
 
-    BF_gene = get_BF(N_1, n_1, N_2, n_2)
-    print(BF_gene)
+    BF_21_gene = get_BF_21(N_1, n_1, N_2, n_2)
+    print(BF_21_gene)
 
 ### Example test frame
 
@@ -62,7 +62,7 @@ Read counts for 5 genes in two different experiments (cound be conditions, devel
     N_1 = in_data.iloc[:,1:4].sum(axis=1).sum()
     N_2 = in_data.iloc[:,4:].sum(axis=1).sum()
 
-    out_data['BF'] = get_BF(N_1, n_1, N_2, n_2)
+    out_data['BF_21'] = get_BF_21(N_1, n_1, N_2, n_2)
     out_data['FC'] = get_FC(N_1, n_1, N_2, n_2)
 
     print(out_data)
@@ -113,7 +113,7 @@ Just as above with the small example frame we can go ahead and calculate Bayes f
     N_1 = WT_yeast.iloc[:,1:].sum(axis=1).sum()
     N_2 = Snf2_yeast.iloc[:,1:].sum(axis=1).sum()
 
-    out_data_yeast['BF'] = get_BF(N_1, n_1, N_2, n_2)
+    out_data_yeast['BF_21'] = get_BF_21(N_1, n_1, N_2, n_2)
     out_data_yeast['FC'] = get_FC(N_1, n_1, N_2, n_2)
 
     print(out_data_yeast)
