@@ -2,19 +2,23 @@
 
 Bayexpress is a framework designed for Differential Gene Expression Analysis of processed RNA-Seq data. It compares sequencing read counts for genes between different experiments.
 
-# A very friendly introduction to Bayesian statistics
-
-Should you be new to Bayesian concepts and you want to learn about it in an easier read than the papers mentioned below you can read my [friendly introduction to Bayesian statistics](https://franziskaaah.github.io/2024/10/24/A-very-friendly-Introduction-to-Bayesian-statistics.html).
-
 ## Dependencies
 
 All basic python functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.py](bayexpress_functions.py). Their dependencies are the numpy and scipy python packages. 
 
 All basic R functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.R](bayexpress_functions.R). 
 
+## Minimal working example
+
 If you are interested in calculating Bayes factors using either python or R you can follow our [minimal working example](minimal_working_example.md).
 
 All code is written in Python 3.10.6 (except running _DESeq2_, _edgeR_ in R), the conda environment export can be found in [environment.yml](environment.yml) containing all python and R package necessary.
+
+$~$
+
+# A very friendly introduction to Bayesian statistics
+
+Should you be new to Bayesian concepts and you want to learn about it in an easier read than the papers mentioned below you can read my [friendly introduction to Bayesian statistics](https://franziskaaah.github.io/2024/10/24/A-very-friendly-Introduction-to-Bayesian-statistics.html).
 
 $~$
 
@@ -23,7 +27,7 @@ $~$
 $~$
 
 > [!NOTE]
-> There are several manuscripts in preparation related to the work in this repository, here is a description what to find where from which paper.
+> There are three manuscripts in preparation related to the work in this repository, here is a description what to find where from which paper.
 
 1. [Hoerbst et al. 2024: Closed Form Solution for the 2-Sample Problem in Differential Gene Expression Analysis](#Closed-Form-Solution-for-the-2-Sample-Problem-in-Differential-Gene-Expression-Analysis)
 2. [Hoerbst et al. 2025: A Bayesian framework for ranking genes based on their statistical evidence for differential expression](#A-Bayesian-framework-for-ranking-genes-based-on-their-statistical-evidence-for-differential-expression)
@@ -35,25 +39,8 @@ $~$
 
 $~$
 
-All code and data used for the arXiv preprint (arXiv:2406.19989 [stat.ME]) https://doi.org/10.48550/arXiv.2406.19989
-# Closed Form Solution for the 2-Sample Problem in Differential Gene Expression Analysis
-
-by 
-
-Franziska Hoerbst, Gurpinder Singh Sidhu, Melissa Tomkins, and Richard J. Morris
-
-$~$
-
-
-### Figure 3
-In Figure 3 we explore the analytical Bayesian framework using synthetic data. All plots from the paper (and more) can be found in [SIM.ipynb](SIM.ipynb).
-
-
------------------------------
-
-$~$
-
-All code and data used for 
+All code and data used for the bioRxiv preprint
+https://www.biorxiv.org/content/10.1101/2025.01.20.633909v1
 
 # A Bayesian framework for ranking genes based on their statistical evidence for differential expression
 
@@ -88,6 +75,7 @@ Can be reproduced via [investigating_length_bias.ipynb](investigating_length_bia
 ### Table 1
 Can be reproduced via [package_comparison_RALL.ipynb](package_comparison_RALL.ipynb).
 
+$~$
 
 -----------------------------
 
@@ -120,6 +108,27 @@ For the control experiments between wild-type and wild-type, DGE analysis has on
 
 ### Figure 3
 Calculating Bayes factors for consistency (BF_k1) and performing bootstrapping experiments to identify consistently inconsistent genes (list of genes marked* as AOTP = All Over The Place) has been carried out using [explore_clean_yeast_consistency.ipynb](explore_clean_yeast_consistency.ipynb). We explored these sets of genes in later parts of the notebook. 
+
+$~$
+
+-----------------------------
+
+$~$
+
+All code and data used for the 2024 arXiv preprint (arXiv:2406.19989 [stat.ME]) https://doi.org/10.48550/arXiv.2406.19989
+# Closed Form Solution for the 2-Sample Problem in Differential Gene Expression Analysis
+
+by 
+
+Franziska Hoerbst, Gurpinder Singh Sidhu, Melissa Tomkins, and Richard J. Morris
+
+$~$
+
+
+### Figure 3
+In Figure 3 we explore the analytical Bayesian framework using synthetic data. All plots from the paper (and more) can be found in [SIM.ipynb](SIM.ipynb).
+
+$~$
 
 -----------------------------
 
