@@ -4,9 +4,9 @@ Bayexpress is a framework designed for Differential Gene Expression Analysis of 
 
 ## Dependencies
 
-All basic python functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.py](bayexpress_functions.py). Their dependencies are the numpy and scipy python packages. 
+All python functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.py](bayexpress_functions.py). Their dependencies are the numpy and scipy python packages.
 
-All basic R functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.R](bayexpress_functions.R). 
+All R functions to use our Bayesian framework for differential gene expression analysis can be found in [bayexpress_functions.R](bayexpress_functions.R). Example usage is shown in [SIM.Rmd](SIM.Rmd) which recreates two of the figures from the [manuscript](https://www.biorxiv.org/content/10.1101/2025.01.20.633909v1.full.pdf).
 
 ## Minimal working example
 

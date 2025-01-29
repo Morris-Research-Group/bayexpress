@@ -1,0 +1,215 @@
+---
+title: "Example usage of BayExpress"
+output: html_notebook
+---
+
+Here we recreate two of the figures from the [manuscript](https://www.biorxiv.org/content/10.1101/2025.01.20.633909v1.full.pdf) to demonstrate how to use BayExpress in R.
+
+We then load the yeast dataset included in the repository and calculate the Bayes factors and fold changes using the BayExpress functions.
+
+
+```{r imports}
+library(tidyverse)
+library(ggthemes)
+```
+
+```{r load bayexpress}
+source("bayexpress_functions.R")
+```
+
+```{r data helpers}
+base_N <- 8e6
+
+# generate the data for the Δn plots
+#
+get_dn_data <- function(N1, N2) {
+  df <- tibble(bf = numeric(), fc = numeric(), dn = numeric(), group = character())
+
+  for (max_n1 in c(30, 100, 500, 1000)) {
+    n1 = seq(0, max_n1)
+    n2 = rev(n1)
+
+    BF = calc_log10_bayes_factor(N1, n1, N2, n2)
+    iFC = calc_log2_fold_change(N1, n1, N2, n2)
+
+    group <- paste0("n1, n2 = 0-", max_n1)
+
+    df <- rbind(df, tibble(bf = BF, fc = iFC, dn = n1 - n2, group = group))
+  }
+
+  mutate(df, group = fct_rev(as_factor(group)))
+}
+
+# generate the data for the Δq plots
+#
+get_dq_data <- function(N1_multiplier = 1) {
+  n1 = seq(0, 1000)
+  n2 = rev(n1)
+
+  df_q <- tibble(bf = numeric(), fc = numeric(), dq = numeric(), group = character())
+
+  for (max_N in c(3, 6, 9, 12)) {
+    N2 = base_N * max_N
+    N1 = N1_multiplier * N2
+    BF = calc_log10_bayes_factor(N1, n1, N2, n2)
+    iFC = calc_log2_fold_change(N1, n1, N2, n2)
+    dq = (n1 + 1)/(N1 + 2) - (n2 + 1)/(N2 + 2)
+
+    if (N1_multiplier == 1) {
+      group <- paste0("N1 = N2 = 8e6 * ", max_N)
+    } else {
+      group <- paste0("N1 = ", N1_multiplier, "*N2, N2 = 8e6 * ", max_N)
+    }
+
+    df_q <- rbind(df_q, tibble(bf = BF, fc = iFC, dq = dq, group = group))
+  }
+
+  mutate(df_q, group = as_factor(group))
+}
+```
+
+
+```{r figure 2}
+N1 <- base_N * 12
+N2 <- N1
+
+df_dn <- get_dn_data(N1 = N1, N2 = N2)
+df_dq <- get_dq_data()
+
+ggplot(df_dn, aes(dn, bf, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 1, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  annotate("text", x = -1000, y = 1, hjust = 0, vjust = -0.2,
+           label = "paste(log[10], \" BF = 1\")", parse = TRUE) +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * n ~ "(=" * n[1]-n[2] * ")"),
+       y = quote(log[10] ~ "Bayes factor"),
+       title = "Bayes factors for differences in expression",
+       subtitle = "See Fig 2a in Hoerbst et al. (2025)",
+       colour = quote(N[1] ~ "=" ~ N[2] ~ "= 8e6 * 12")) +
+  theme_bw()
+
+ggplot(df_dq, aes(dq, bf, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 1, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  annotate("text", x = -5e-5, y = 1, hjust = 0, vjust = -0.2,
+           label = "paste(log[10], \" BF = 1\")", parse = TRUE) +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * q),
+       y = quote(log[10] ~ "Bayes factor"),
+       title = "Bayes factors for differences in q",
+       subtitle = "See Fig 2b in Hoerbst et al. (2025)",
+       colour = quote(n[1] * ", " ~ n[2] ~ "= 0-1000")) +
+  theme_bw()
+
+ggplot(df_dn, aes(dn, fc, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 0, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * n ~ "(=" * n[1]-n[2] * ")"),
+       y = quote("Inferred" ~ log[2] ~ "fold change (#2 / #1)"),
+       title = "Inferred fold change for differences in expression",
+       subtitle = "See Fig 2c in Hoerbst et al. (2025)",
+       colour = quote(N[1] ~ "=" ~ N[2] ~ "= 8e6 * 12")
+  ) +
+  theme_bw()
+
+ggplot(df_dq, aes(dq, fc, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 0, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * q),
+       y = quote("Inferred" ~ log[2] ~ "fold change (#2 / #1)"),
+       title = "Inferred fold change for differences in q",
+       subtitle = "See Fig 2d in Hoerbst et al. (2025)",
+       colour = quote(n[1] * ", " ~ n[2] ~ "= 0-1000")
+  ) +
+  theme_bw()
+```
+
+
+```{r figure 6}
+N1_multiplier <- 2
+
+N2 <- base_N * 12
+N1 <- N2 * N1_multiplier
+
+df_dn <- get_dn_data(N1 = N1, N2 = N2)
+df_dq <- get_dq_data(N1_multiplier = N1_multiplier)
+
+ggplot(df_dn, aes(dn, bf, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 1, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  annotate("text", x = -1000, y = 1, hjust = 0, vjust = -0.2,
+           label = "paste(log[10], \" BF = 1\")", parse = TRUE) +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * n ~ "(=" * n[1]-n[2] * ")"),
+       y = quote(log[10] ~ "Bayes factor"),
+       title = "Bayes factors for differences in expression",
+       subtitle = "See Fig 6a in Hoerbst et al. (2025)",
+       colour = quote(N[1] ~ "= 2 *" ~ N[2] ~ ", " ~ N[2] ~ "= 8e6 * 12")) +
+  theme_bw()
+
+ggplot(df_dq, aes(dq, bf, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 1, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  annotate("text", x = -5e-5, y = 1, hjust = 0, vjust = -0.2,
+           label = "paste(log[10], \" BF = 1\")", parse = TRUE) +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * q),
+       y = quote(log[10] ~ "Bayes factor"),
+       title = "Bayes factors for differences in q",
+       subtitle = "See Fig 6b in Hoerbst et al. (2025)",
+       colour = quote(n[1] * ", " ~ n[2] ~ "= 0-1000")) +
+  theme_bw()
+
+ggplot(df_dn, aes(dn, fc, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 0, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * n ~ "(=" * n[1]-n[2] * ")"),
+       y = quote("Inferred" ~ log[2] ~ "fold change (#2 / #1)"),
+       title = "Inferred fold change for differences in expression",
+       subtitle = "See Fig 6c in Hoerbst et al. (2025)",
+       colour = quote(N[1] ~ "= 2 *" ~ N[2] ~ ", " ~ N[2] ~ "= 8e6 * 12")
+  ) +
+  theme_bw()
+
+ggplot(df_dq, aes(dq, fc, colour = group)) +
+  geom_line(linewidth = 1.1) +
+  geom_hline(yintercept = 0, linewidth = 0.5, colour = "grey", linetype = "dashed") +
+  ggthemes::scale_colour_solarized() +
+  labs(x = quote(Delta * q),
+       y = quote("Inferred" ~ log[2] ~ "fold change (#2 / #1)"),
+       title = "Inferred fold change for differences in q",
+       subtitle = "See Fig 6d in Hoerbst et al. (2025)",
+       colour = quote(n[1] * ", " ~ n[2] ~ "= 0-1000")
+  ) +
+  theme_bw()
+```
+
+```{r Yeast data}
+# Load the yeast data and then calculate the Bayes factors and fold changes
+
+WT_yeast <- read_csv("WT_yeast.csv", show_col_types = FALSE) |>
+  select(-`...1`) |>
+  rename_with(~ paste0("WT_", .x), where(is.numeric)) |>
+  mutate(n_WT = rowSums(across(where(is.numeric))),
+         N_WT = sum(n_WT))
+
+Snf2_yeast <- read_csv("Snf2_yeast.csv", show_col_types = FALSE) |>
+  select(-`...1`) |>
+  rename_with(~ paste0("Snf2_", .x), where(is.numeric)) |>
+  mutate(n_Snf2 = rowSums(across(where(is.numeric))),
+         N_Snf2 = sum(n_Snf2))
+
+yeast_dt <- inner_join(WT_yeast, 
+                       Snf2_yeast,
+                       by = "genes") |>
+  select(genes, n_WT, N_WT, n_Snf2, N_Snf2) |>
+  mutate(log10_BF = calc_log10_bayes_factor(N_1 = N_WT, n_1 = n_WT, N_2 = N_Snf2, n_2 = n_Snf2),
+         log2_FC = calc_log2_fold_change(N_1 = N_WT, n_1 = n_WT, N_2 = N_Snf2, n_2 = n_Snf2))
+
+yeast_dt
+```
+
