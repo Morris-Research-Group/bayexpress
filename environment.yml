@@ -171,6 +171,7 @@ dependencies:
   - matplotlib=3.10.0=py313habf4b1d_0
   - matplotlib-base=3.10.0=py313he981572_0
   - matplotlib-inline=0.1.7=pyhd8ed1ab_1
+  - matplotlib-venn=1.1.1=pyhd8ed1ab_1
   - mistune=3.1.0=pyhd8ed1ab_0
   - mpc=1.3.1=h9d8efa1_1
   - mpfr=4.2.1=haed47dc_3
