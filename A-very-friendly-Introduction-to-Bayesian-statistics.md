@@ -214,7 +214,7 @@ $$
 
 This description implies, for example, that if we knew the success rate $q$ of a player and the number of rounds they played, $N$, we can, with the help of the binomial distribution, compute the probability of any number of successes $n$, Figure 7. 
 
-![Figure 7](/FIGS/binomial1.png)![Figure 7](/FIGS/binomial2.png)
+![Figure 7](/FIGS/binomial1.png | width=50)![Figure 7](/FIGS/binomial2.png | width=50)
 Figure 7: Imagine we are watching two players with different tactics represented by different success rates, 0.5 and 0.7. With the help of the binomial distribution we can compute the probability of successes in $N$ rounds for all possible $n$ from 0 to 10.
 
 # 6.3 – Learning from data
