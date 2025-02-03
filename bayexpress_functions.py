@@ -23,7 +23,10 @@ def get_BF_21(N_1, # Total number of reads for genes in experiment 1
     # hence we after convert natural log to log_10
     BF_21 = (sc.betaln( u_1 + n_1, u_2 + N_1 - n_1) + sc.betaln( u_1 + n_2, u_2 + N_2 - n_2) - sc.betaln( u_1 + n_1 + n_2, u_2 + N_1 - n_1 + N_2 - n_2)) / np.log(10)
 
-    return  np.where((n_1+n_2==0), np.nan, BF_21)
+    # if we wanted to return nans for genes with 0 in all replicates and conditions we can use this
+    # BF_21 = np.where((n_1+n_2==0), np.nan, BF_21)
+
+    return  BF_21
 
 
 # ratio of expression 
@@ -41,7 +44,10 @@ def get_FC(N_1, # Total number of reads for genes in experiment 1
 
     FC = np.log2(rate_2 / rate_1)
 
-    return np.where((n_1+n_2==0), np.nan, FC)
+    # if we wanted to return nans for genes with 0 in all replicates and conditions we can use this
+    # FC = np.where((n_1+n_2==0), np.nan, FC)
+
+    return FC
 
 # calculating q (following Laplace's rule of succession)
 def get_q(n, # Number of reads mapping to a gene
@@ -53,6 +59,7 @@ def get_q(n, # Number of reads mapping to a gene
 
 # calculating log_10 Bayes factors (BF_k1) for consistency 
 def get_BF_k1(data):
+    
     # this range is irrelevant if we want to do all replicates
     k = len(data.columns)
 
