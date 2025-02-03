@@ -214,7 +214,7 @@ $$
 
 This description implies, for example, that if we knew the success rate $q$ of a player and the number of rounds they played, $N$, we can, with the help of the binomial distribution, compute the probability of any number of successes $n$, Figure 7. 
 
-![Figure 7](/FIGS/binomial_landscape.png.png)!
+![Figure 7](/FIGS/binomial_landscape.png)!
 Figure 7: Imagine we are watching two players with different tactics represented by different success rates, 0.5 and 0.7. With the help of the binomial distribution we can compute the probability of successes in $N$ rounds for all possible $n$ from 0 to 10.
 
 # 6.3 – Learning from data
@@ -233,7 +233,7 @@ Before we collect our data we don't know about the performance of our players. O
 
 Let's look at some results of the games, Table 3.
 
-![Figure 7](/FIGS/GAME10.png)
+![Table 3](/FIGS/GAME10.png)
 Table 3: Our players have played 3 games (10 rounds each) of 'above or below'. We have counted how many times they have guessed the right answer. Both players were shown the same cards and they chose their answers independently.
 
 We can infer an expectation value $\langle \theta \rangle$ for the success rates of our players from their success counts $n$ among games $N$,
@@ -289,7 +289,7 @@ $$
 
 To visualise this integration, you can picture that the evidence is the area under the curve of $P(D\vert \theta) \times P(\theta)$. The evidence tells us how much the possibility space given by the hypothesis collapses by looking at the data. 
 
-![Figure 9](/FIGS/3dlikelihoods.png)
+![Figure 9](/FIGS/3likelihoods.png)
 Figure 9: We can calculate the estimated number of successes for any probability of success $\theta$. Remember, in our calculations, we assign a probability distribution over $\theta$, instead of only considering a single value. Finding the evidence is calculating the space under under the curve of $P(D\vert \theta) \times P(\theta)$, given data $n$. The evidence is a measure for how much the possibility space collapses by data given the hypothesis or model.
 
 Note, that this is not limited to 2 dimensional spaces and can be extended to 3 or more if there are several variables you integrate over, $P(D\vert \theta_1, \theta_2) \times P(\theta_1, \theta_2)$ ...
