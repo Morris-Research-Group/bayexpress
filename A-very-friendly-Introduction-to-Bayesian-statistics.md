@@ -214,7 +214,7 @@ $$
 
 This description implies, for example, that if we knew the success rate $q$ of a player and the number of rounds they played, $N$, we can, with the help of the binomial distribution, compute the probability of any number of successes $n$, Figure 7. 
 
-![Figure 7](/FIGS/binomial1.png | width=50)![Figure 7](/FIGS/binomial2.png | width=50)
+![Figure 7](/FIGS/binomial_landscape.png.png)!
 Figure 7: Imagine we are watching two players with different tactics represented by different success rates, 0.5 and 0.7. With the help of the binomial distribution we can compute the probability of successes in $N$ rounds for all possible $n$ from 0 to 10.
 
 # 6.3 – Learning from data
@@ -278,12 +278,7 @@ $$
 
 Can you spot the similarities? The prior gives us the option to start with no knowledge or bias (called flat prior), where all outcomes are equally likely by setting $u_1 = u_2 = 1$. Theoretically, one could introduce a bias to favor one success rate $\theta$ over another, but as we stated earlier, there is no good reason here to do that. Figure 8 shows the concept of Beta priors and how we could introduce bias over $\theta$ to capture either theoretical reasoning or knowledge from previous experiments. 
 
-![Figure 8.1](/FIGS/betaprior1.png)
-![Figure 8.2](/FIGS/betapriors2.png)
-![Figure 8.3](/FIGS/betapriors3.png)
-![Figure 8.4](/FIGS/betapriors4.png)
-![Figure 8.5](/FIGS/betapriors.png)
-![Figure 8.6](/FIGS/betapriors6.png)
+![Figure 8.1](/FIGS/betaprior_panel.png)
 Figure 8: Beta distributions change their shapes according to their hyper-parameters $u_1$ and $u_2$. Choosing a 'flat prior', $u_1 = u_2 = 1$, introducing no bias or prior information.
 
 Finally, the evidence $P(D)$, found in the denominator of the posterior probability, is the probability that the data $D$ is produced. So we are computing the probability for seeing data $D$ given all possible values of $\theta$, which means we want to sum over all probabilities for all values of $\theta$ between 0 and 1, which is essentially integrating over $P(D\vert \theta)$ weighed by how likely each $\theta$ is, $P(\theta)$,

@@ -18,7 +18,7 @@ $~$
 
 # A very friendly introduction to Bayesian statistics
 
-Should you be new to Bayesian concepts and you want to learn about it in an easier read than the papers mentioned below you can read my [friendly introduction to Bayesian statistics](https://franziskaaah.github.io/2024/10/24/A-very-friendly-Introduction-to-Bayesian-statistics.html).
+Should you be new to Bayesian concepts and you want to learn about it in an easier read than the papers mentioned below you can read my [friendly introduction to Bayesian statistics](A-very-friendly-Introduction-to-Bayesian-statistics.md).
 
 $~$
 
@@ -81,7 +81,8 @@ $~$
 
 $~$
 
-All code and data used for 
+All code and data used for the bioRxiv preprint
+https://www.biorxiv.org/content/10.1101/2025.01.31.635902v1.article-metrics
 
 # What is a differentially expressed gene?
 
