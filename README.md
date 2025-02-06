@@ -12,7 +12,7 @@ All R functions to use our Bayesian framework for differential gene expression a
 
 If you are interested in calculating Bayes factors using either python or R you can follow our [minimal working example](minimal_working_example.md).
 
-All code is written in Python 3.10.6 (except running _DESeq2_, _edgeR_ in R), the conda environment export can be found in [environment.yml](environment.yml) containing all python and R package necessary.
+All code is written in Python 3.10.6 (except _DESeq2_ (v 1.38.3), _edgeR_ (v 3.40.2) in R 4.2.2), the conda environment export can be found in [environment.yml](environment.yml) containing all python and R package necessary.
 
 $~$
 
